@@ -1,40 +1,89 @@
 <!DOCTYPE html>
-
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>Gamedev Canvas Workshop</title>
-    <style>
-      * { padding: 0; margin: 0; }
-      canvas { background: #eee; display: block; margin: 0 auto; }
-    </style>
-</head>
+<html lang="en">
+<meta charset="UTF-8">
+<title>Maze Winner</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="">
+<style>
+</style>
+<script src=""></script>
 <body>
 
-<canvas id="myCanvas" width="480" height="320"></canvas>
+<div class="Text">
+ <h1>Maze Winner</h1>
+ <p>Game Instructions?</p>
+</div>
 
-<script>
-    var canvas = document.getElementById("myCanvas");
-    var ctx = canvas.getContext("2d");
-
-    var gridSize = 4;
-    var grid = [];
-    for (var i=0; i<gridSize; j++) {
-        grid[i] = [];
-        for (var j=0; j<gridSize; j++) {
-            grid[i][j] = 'Empty';
-        }
-    }
-
-    grid[0][0] = "Start";
-    grid[2][2] = "Goal";
-
-    grid[1][1] = "Obstacle";
-    grid[1][2] = "Obstacle";
-    grid[1][3] = "Obstacle";
-    grid[2][1] = "Obstacle";
-    
-    </script>
+<table>
+    <tr>
+        <td>
+            <img src="black_wall.png" alt="black" style="width:10%">
+        </td>
+        <td>
+            <img src="black_wall.png" alt="black" style="width:10%">
+        </td>
+        <td>
+            <img src="img_la.jpg" alt="LA" style="width:100%">
+        </td>
+        <td>
+            <img src="img_la.jpg" alt="LA" style="width:100%">
+        </td>
+        <td>
+            <img src="img_la.jpg" alt="LA" style="width:100%">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img src="img_la.jpg" alt="LA" style="width:100%">
+        </td>
+        <td>
+            <img src="img_la.jpg" alt="LA" style="width:100%">
+        </td>
+        <td>
+            <img src="img_la.jpg" alt="LA" style="width:100%">
+        </td>
+        <td>
+            <img src="img_la.jpg" alt="LA" style="width:100%">
+        </td>
+        <td>
+            <img src="img_la.jpg" alt="LA" style="width:100%">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img src="img_la.jpg" alt="LA" style="width:100%">
+        </td>
+        <td>
+            <img src="img_la.jpg" alt="LA" style="width:100%">
+        </td>
+        <td>
+            <img src="img_la.jpg" alt="LA" style="width:100%">
+        </td>
+        <td>
+            <img src="img_la.jpg" alt="LA" style="width:100%">
+        </td>
+        <td>
+            <img src="img_la.jpg" alt="LA" style="width:100%">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img src="img_la.jpg" alt="LA" style="width:100%">
+        </td>
+        <td>
+            <img src="img_la.jpg" alt="LA" style="width:100%">
+        </td>
+        <td>
+            <img src="img_la.jpg" alt="LA" style="width:100%">
+        </td>
+        <td>
+            <img src="img_la.jpg" alt="LA" style="width:100%">
+        </td>
+        <td>
+            <img src="img_la.jpg" alt="LA" style="width:100%">
+        </td>
+    </tr>
+</table>
 
 </body>
 </html>
