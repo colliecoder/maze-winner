@@ -2,7 +2,49 @@
 //0 represents walls, 1 represents a possible path, 2 represents end point
 
 //blank maze initialization
-//document.getElementById('maze')
+
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+
+ctx.fillStyle = 'skyblue';
+ctx.fillRect(0, 0, 500, 500);
+
+
+class cell {
+    constructor(x, y){
+        this.x;
+        this.y;
+        
+        this.left;
+        this.right;
+        this.top;
+        this.bottom;
+        this.walls = {
+            topWall: true,
+            bottomWall: true,
+            leftWall: true,
+            rightWall: true,
+        };
+    }
+}
+
+//maze
+//cells
+//cellwalls?
+
+
+
+//common functions
+
+
+
+
+//function pickStart() {}
+
+//function removeWall(currCell, chosenCell) {}
+
+
+
 
 
 //algorithms

@@ -26,8 +26,20 @@ table {
     
 }
 
-table td {
+.info_text {
+    color: whitesmoke;
+    text-align: center;
+    padding : 0;
+    margin : 0;
+    line-height : 20px;
+}
 
-    border: 1px #000000 solid;
+h1 {
+    font-size: 3em;
+}
 
+canvas {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
