@@ -9,8 +9,25 @@ const ctx = canvas.getContext('2d');
 ctx.fillStyle = 'skyblue';
 ctx.fillRect(0, 0, 500, 500);
 
+class Maze{
+    constructor(size){
+        this.size = size;
+        this.arrayTBD = [];
 
-class cell {
+    }
+    generateMaze() {
+        for (let x = 0; x < this.size; ++x) {
+            for (let y = 0; y < this.size; ++y) {
+                let coordinate = new Cell(x, y);
+                coordinate.drawCell(x, y);
+                //this.arrayTBD.push(coordinate);
+            }
+        }
+    }
+
+}
+
+class Cell {
     constructor(x, y){
         this.x;
         this.y;
@@ -23,8 +40,13 @@ class cell {
             topWall: true,
             bottomWall: true,
             leftWall: true,
-            rightWall: true,
-        };
+            rightWall: true
+        }
+    }
+    drawCell(x, y) {
+        ctx.lineWidth = 10;
+        ctx.strokeStyle = "yellow";
+        ctx.strokeRect((x * 50), (y * 50), 50, 50);
     }
 }
 
@@ -96,3 +118,8 @@ function aldousBroder() {
         Make the chosen neighbour the current cell.
     */
 }
+
+
+//body
+let maze = new Maze(10);
+maze.generateMaze();
