@@ -12,7 +12,7 @@ ctx.fillRect(0, 0, 500, 500);
 class Maze{
     constructor(size){
         this.size = size;
-        this.arrayTBD = [];
+        this.mazeCells = [];
 
     }
     generateMaze() {
@@ -20,9 +20,12 @@ class Maze{
             for (let y = 0; y < this.size; ++y) {
                 let coordinate = new Cell(x, y);
                 coordinate.drawCell(x, y);
-                //this.arrayTBD.push(coordinate);
+                this.mazeCells.push(coordinate);
             }
         }
+    }
+    pickStart() {
+        return this.mazeCells[0];
     }
 
 }
@@ -43,38 +46,122 @@ class Cell {
             rightWall: true
         }
     }
+
     drawCell(x, y) {
-        ctx.lineWidth = 10;
-        ctx.strokeStyle = "yellow";
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = "white";
         ctx.strokeRect((x * 50), (y * 50), 50, 50);
-    }
+    } 
 }
-
-//maze
-//cells
-//cellwalls?
-
-
 
 //common functions
 
+function checkNeighbors(mazeSize, x, y) {
+    const neighbors = [];
+
+    let leftNeighbor = false;
+    let topNeighbor = false;
+    let rightNeighbor = false;
+    let bottomNeighbor = false;
+
+    if ((y - 1) < 0) {
+        leftNeighbor = true;
+        neighbors.push(leftNeighbor);
+    }
+    if((x - 1) < 0) {
+        topNeighbor = true;
+        neighbors.push(topNeighbor);
+    }
+    if ((x + 1) < mazeSize) {
+        bottomNeighbor = true;
+        neighbors.push(bottomNeighbor);
+    }
+    if ((y + 1) < mazeSize) {
+        rightNeighbor = true;
+        neighbors.push(rightNeighbor);
+    }
+
+    return neighbors;
+}
 
 
+function removeBottomWall(x, y) {
+    ctx.lineWidth = 4;
+    ctx.strokeStyle = "skyblue";
+    
+    //has to be +-2 depending on location
+    ctx.beginPath();
+    ctx.moveTo(((x * 50) + 2), ((y * 50) + 50));
+    ctx.lineTo(((x * 50) + 48), ((y * 50) + 50));
+    ctx.closePath();
+    ctx.stroke();
 
-//function pickStart() {}
+    //change wall value of cells
+}
 
-//function removeWall(currCell, chosenCell) {}
+function removeRightWall(x, y) {
+    ctx.lineWidth = 4;
+    ctx.strokeStyle = "skyblue";
+    
+    //has to be +-2 depending on location
+    ctx.beginPath();
+    ctx.moveTo(((x * 50) + 50), ((y * 50) + 2));
+    ctx.lineTo(((x * 50) + 50), ((y * 50) + 48));
+    ctx.closePath();
+    ctx.stroke();
 
+    //change wall value of cells
+}
 
+function removeLeftWall(x, y) {
+    ctx.lineWidth = 4;
+    ctx.strokeStyle = "skyblue";
+    
+    //has to be +-2 depending on location
+    ctx.beginPath();
+    ctx.moveTo((x * 50), ((y * 50) + 2));
+    ctx.lineTo((x * 50), ((y * 50) + 48));
+    ctx.closePath();
+    ctx.stroke();
+
+    //change wall value of cells
+}
+
+function removeTopWall(x, y) {
+    ctx.lineWidth = 4;
+    ctx.strokeStyle = "skyblue";
+    
+    //has to be +-2 depending on location
+    ctx.beginPath();
+    ctx.moveTo(((x * 50) + 2), (y * 50));
+    ctx.lineTo(((x * 50) + 48), (y * 50));
+    ctx.closePath();
+    ctx.stroke();
+
+    //change wall value of cells
+}
 
 
 
 //algorithms
 
-function depthFirstSearch(){
+function depthFirstSearch(maze){
+    const visited = [];
+    const stack = [];
+
+    //Choose the initial cell, mark it as visited and push it to the stack
+    start = maze.pickStart();
+    visited.push(start);
+    stack.push(start);
+
+    //while the stack is not empty
+    while (stack.length() != 0) {
+        //pops a cell from the stack and makes it the current cell
+        let currCell = stack.pop();
+        //If the current cell has any neighbors which have not been visited
+    }
+
     /*
-    Choose the initial cell, mark it as visited and push it to the stack
-    
     While the stack is not empty
         Pop a cell from the stack and make it a current cell
         If the current cell has any neighbours which have not been visited
@@ -123,3 +210,6 @@ function aldousBroder() {
 //body
 let maze = new Maze(10);
 maze.generateMaze();
+depthFirstSearch(maze);
+
+console.log("x = " + maze.mazeCells[0].x);
