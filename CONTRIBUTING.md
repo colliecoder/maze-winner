@@ -20,7 +20,7 @@
   - a good first project would be to pick an incomplete function to work on within maze_completion.js or maze_solver.js.
   - a good first documentation project would be to pick an algorithm within maze_completion.js or maze_solver.js, do research on it and contribute 2+ paragraphs and a diagram or 3+ paragraphs without a diagram
 - Once you have decided what you would like to work on create comments within the code outlining your chosen contribution
-  - If you picked a function to work on create comments with basic pseudocode describing how you will solve the problem. Below is an example of what pseudocode can look like:
+  - If you picked a function to work on create comments with basic pseudocode describing how you will solve the problem or if applicable modify existing pseudocode. Below is an example of what pseudocode can look like:
   
    ``` 
   function myFunction(array, findMe) {
@@ -33,8 +33,8 @@
     return answer
   }
   ```
-  
   - For documentation create a comment in the README.md file with your overall topic and a comment on what each paragraph will focus on
+  - For any section in the code you would like to work on create a comment indicating you plan on working on that section. 
 - Add your name to contributors in README.md using the format below: 
 
 ``` [Name](https://github.com/username) ```
