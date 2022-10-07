@@ -25,3 +25,11 @@ Object-oriented.
 ## search algorithms
 
 [//]# (add visuals and code snippets)
+
+# The People Behind the Project
+## Maintainers
+[Kiersten](https://github.com/colliecoder)
+## Contributors
+
+Accepting contributions to hacktoberfest 2022 :jack_o_lantern: :ghost: :jack_o_lantern: !
+
