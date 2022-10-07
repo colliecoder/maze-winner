@@ -1,16 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 html, body  {
+    font-family: Montserrat, sans-serif;
     width: 100%;
     height: 100%;
     top: 0;
     bottom: 0;
     margin: 0;
     padding: 0;
-    position: absolute ;
+    position: absolute;
     background-color: #DB7093;
 }
 
 div#maze_container {
-
     width: 500px;
     height: 500px;
     margin: 0 auto;
@@ -18,12 +20,11 @@ div#maze_container {
     border: 2px #000000 solid;
     margin-top: 5em;
 }
-table {
 
+table {
     width: 100%;
     height: 100%;
     border-spacing: 0;
-    
 }
 
 .info_text {
