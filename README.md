@@ -31,5 +31,9 @@ Maze generation is a classic application of basic search algorithms.
 
 # Contributors :
 
+[Buggy-coder](https://github.com/Buggy-coder)
+
 Accepting contributions to hacktoberfest 2022 :jack_o_lantern: :ghost: :jack_o_lantern: !
+
+# For any issues or help raise a [issue](https://github.com/colliecoder/maze-winner/issues)
 
