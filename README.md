@@ -21,7 +21,7 @@ Maze generation is a classic application of basic search algorithms.
 # Fundamental ideas/algorithms
 
 
-[//]# (add visuals and code snippets)
+
 
 # The People Responsible  for the project
 
