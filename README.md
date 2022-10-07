@@ -1,35 +1,35 @@
 # maze-winner
-Maze winner is a maze generation and solving visualization of popular search algorithms such as depth first search and aldous broder.
+"Maze Winner" is a maze generation and solving visualisation of popular search algorithms such as depth first search and aldous broder.
 
 # Overview
 
 Maze generation is a classic application of basic search algorithms. 
 
-This project uses...
+# Project uses the following technologies:
 
-# Process
-## Technologies Used
 - HTML Canvas
 - HTML 5
 - CSS
 - Javascript
-## Approach Taken
-Object-oriented.
 
-# "wins" and "blockers"
-## things I liked about the project
-## what I would have improved
+# The strategy used is object-oriented.
 
-# core concepts/algorithms
-## canvas html
-## search algorithms
+
+
+# Positive aspects of the project and areas for improvement
+
+# Fundamental ideas/algorithms
+
 
 [//]# (add visuals and code snippets)
 
-# The People Behind the Project
-## Maintainers
+# The People Responsible  for the project
+
+# Maintainers : 
+
 [Kiersten](https://github.com/colliecoder)
-## Contributors
+
+# Contributors :
 
 Accepting contributions to hacktoberfest 2022 :jack_o_lantern: :ghost: :jack_o_lantern: !
 
