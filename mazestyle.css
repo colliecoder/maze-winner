@@ -44,3 +44,10 @@ canvas {
     display: block;
     border: 2px solid blue;
 }
+
+@media only screen and (max-width: 757px) {
+    #canvas {
+        width: 85%;
+    }
+}
+
