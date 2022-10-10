@@ -101,7 +101,7 @@ class Maze {
 		}
 	}
 
-	generateKrushal() {
+	generateKrushkal() {
 		/*
 		Create a list of all walls, and create a set for each cell, each containing just that one cell.
 		For each wall, in some random order:
@@ -244,5 +244,5 @@ class Cell {
 
 let maze = new Maze(10);
 maze.generateDepthFirst();
-// maze.generateKrushal();
+// maze.generateKrushkal();
 maze.draw();
