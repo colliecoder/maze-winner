@@ -16,6 +16,37 @@ function shuffle(array) {
 
 blankCanvas();
 
+class DSU {
+	constructor(n) {
+		this.parent = new Array(n);
+		for(let i = 0; i < n; ++i) {
+			this.parent[i] = new Array(n);
+		}
+
+		for(let i = 0; i < n; ++i) {
+			for(let j = 0; j < n; ++j) {
+				this.parent[i][j] = [i, j];
+			}
+		}
+	}
+
+	getParent(x, y) {
+		if(this.parent[x][y][0] === x && this.parent[x][y][1] === y) {
+			return [x, y];
+		}
+		return this.parent[x][y] = this.getParent(...this.parent[x][y]);
+	}
+
+	unite(x1, y1, x2, y2) {
+		[x1, y1] = this.getParent(x1, y1);
+		[x2, y2] = this.getParent(x2, y2);
+
+		if(x1 !== x2 || y1 !== y2) {
+			this.parent[x1][y1] = [x2, y2];
+		}
+	}
+}
+
 class Maze {
     constructor(size) {
     	this.size = size;
@@ -70,7 +101,7 @@ class Maze {
 		}
 	}
 
-	generateKrushal() {
+	generateKrushkal() {
 		/*
 		Create a list of all walls, and create a set for each cell, each containing just that one cell.
 		For each wall, in some random order:
@@ -78,6 +109,51 @@ class Maze {
 				Remove the current wall.
 				Join the sets of the formerly divided cells.
 		*/
+
+		// create a list of all walls.
+		let walls = [];
+		for(let y = 0; y < this.size; ++y) {
+			for(let x = 0; x < this.size; ++x) {
+				let cell = this.at(x, y);
+				if(cell.neighbours.north != null) {
+					walls.push([cell, cell.neighbours.north]);
+				}
+
+				if(cell.neighbours.east != null) {
+					walls.push([cell, cell.neighbours.east]);
+				}
+
+				if(cell.neighbours.south != null) {
+					walls.push([cell, cell.neighbours.south]);
+				}
+
+				if(cell.neighbours.west != null) {
+					walls.push([cell, cell.neighbours.west]);
+				}
+			}
+		}
+
+		// create a set for each cell.
+		let dsu = new DSU(this.size);
+		
+		// for each wall, in some random order:
+		walls = shuffle(walls);
+
+		for(let i = 0; i < walls.length; ++i) {
+			let [cell1, cell2] = walls[i];
+
+			// if the cells divided by this wall belong to distinct sets:
+			const [x1, y1] = dsu.getParent(cell1.x, cell1.y);
+			const [x2, y2] = dsu.getParent(cell2.x, cell2.y);
+
+			if(x1 !== x2 || y1 !== y2) {
+				// remove the current wall.
+				cell1.tunnelTo(cell2);
+
+				// join the sets of the formerly divided cells.
+				dsu.unite(cell1.x, cell1.y, cell2.x, cell2.y);
+			}
+		}
 	}
 
 	generatePrim() {
@@ -122,7 +198,7 @@ class Cell {
 
 			if(this.neighbours.south == cell) {
 				this.bottom = false;
-				this.neighbours.south.bottom = true;
+				this.neighbours.south.top = false;
 			}
 
 			if(this.neighbours.west == cell) {
@@ -168,4 +244,5 @@ class Cell {
 
 let maze = new Maze(10);
 maze.generateDepthFirst();
+// maze.generateKrushkal();
 maze.draw();
