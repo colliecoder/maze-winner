@@ -1,0 +1,31 @@
+Your One-Stop Solution to Learn Kruskal Algorithm From Scratch
+
+
+Kruskal’s algorithm is the concept that is introduced in the graph theory of discrete mathematics. It is used to 
+discover the shortest path between two points in a connected weighted graph. This algorithm converts a given
+graph into the forest, considering each node as a separate tree. 
+
+
+                                ---Introduction to Kruskal Algorithm----
+As mentioned earlier, the Kruskal algorithm is used to generate a minimum spanning tree for a given graph. But,
+ what exactly is a minimum spanning tree? A minimum spanning tree is a subset of a graph with the same number of 
+ vertices as the graph and edges equal to the number of vertices -1. It also has a minimal cost for the sum of 
+ all edge weights in a spanning tree.
+
+Kruskal’s algorithm sorts all the edges in increasing order of their edge weights and keeps adding nodes to the 
+tree only if the chosen edge does not form any cycle. Also, it picks the edge with a minimum cost at first and 
+the edge with a maximum cost at last. Hence, you can say that the Kruskal algorithm makes a locally optimal 
+choice, intending to find the global optimal solution. That is why it is called a Greedy Algorithm. 
+
+
+
+Creating Minimum Spanning Tree Using Kruskal Algorithm
+
+You will first look into the steps involved in Kruskal’s Algorithm to generate a minimum spanning tree:
+
+Step 1: Sort all edges in increasing order of their edge weights.
+Step 2: Pick the smallest edge.
+Step 3: Check if the new edge creates a cycle or loop in a spanning tree.
+Step 4: If it doesn’t form the cycle, then include that edge in MST. Otherwise, discard it.
+Step 5: Repeat from step 2 until it includes |V| - 1 edges in MST.
+
