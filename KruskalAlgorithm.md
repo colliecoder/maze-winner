@@ -52,7 +52,7 @@ You will first look into the steps involved in Kruskal’s Algorithm to generate
 ```
 
 ## Kruskal Algorithm Pseudocode
-
+```
 KRUSKAL(G):
 
 A = ∅
@@ -63,7 +63,7 @@ if FIND-SET(u) ≠ FIND-SET(v):
 A = A ∪ {(u, v)}
 UNION(u, v)
 return A
-
+```
 ## Example of Kruskal's algorithm
 
 <!-- <img src="https://www.researchgate.net/profile/Yael-Jacob/publication/221923505/figure/fig5/AS:305090574471176@1449750670012/An-example-of-how-the-Kruskal-algorithm-can-be-used-in-order-to-find-the-minimal-spanning.png"> -->
