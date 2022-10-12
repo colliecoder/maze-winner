@@ -92,16 +92,32 @@ class Maze {
 	*/
 	}
 
-	generateAldousBroder() {
-		/*
-		Pick a random cell as the current cell and mark it as visited.
-		While there are unvisited cells:
-			Pick a random neighbour.
-			If the chosen neighbour has not been visited:
-				Remove the wall between the current cell and the chosen neighbour.
-				Mark the chosen neighbour as visited.
-			Make the chosen neighbour the current cell.
-		*/
+	generateAldousBroder(visited = []) {
+		//mark a random cell as visited
+		let currentCell = this.at(
+			Math.floor(Math.random() * this.size),
+			Math.floor(Math.random() * this.size)
+		);
+		visited.push(currentCell);
+
+		let remaining = this.cells.flat().length - 1;
+		while(remaining > 0) {
+			const directions = shuffle(['north', 'south', 'east', 'west']);
+			for (const direction of directions) {
+				let neighbour = currentCell.neighbours[direction];
+				if(neighbour != null && !visited.includes(neighbour)) {
+					currentCell.tunnelTo(neighbour);
+					currentCell = neighbour;
+					visited.push(currentCell);
+					remaining -= 1;
+				}
+			}
+			//Taking another random cell to avoid infinite loop in visited cells 
+			currentCell = this.at(
+				Math.floor(Math.random() * this.size),
+				Math.floor(Math.random() * this.size)
+			);
+		}
 	}
 }
 
@@ -168,4 +184,5 @@ class Cell {
 
 let maze = new Maze(10);
 maze.generateDepthFirst();
+//maze.generateAldousBroder();
 maze.draw();
