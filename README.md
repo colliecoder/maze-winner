@@ -10,9 +10,6 @@ Maze generation is a classic application of search algorithms just as much as so
 The goal of the maze winner project is to visualize the paths search algorithms traverse to create the maze or to solve the maze. By visualizing the way that node-traversing search algorithms generate mazes and solve mazes it's possible to understand them better. The purpose of this project is thus educational.
 
 In order to work this project uses...
-
-In order to work this project uses...
-
 # Process
 
 ## Technologies Used
@@ -63,6 +60,10 @@ You can learn more about CSS here:
 
 JavaScript is a programming language often used for web development. It uses high-level just-in-time compiling, which generally means that it loads when the user needs it. JavaScript is an excellent programming language for creating websites and is the main language used in this project. 
 
+You can learn more about JavaScript here: 
+
+[JavScript W3 Schools](https://www.w3schools.com/js/default.asp)
+
 The reason maze-winner is written in JavaScript is because our goal is to create a simple visualization tool that can be hosted on the World Wide Web. JavaScript is also in line with maze-winners open-source ideology as it is widely known and commonly used.
 
 And as maze-winner is a hacktoberfest 2022 project, JavaScript was an obvious choice because it is a highly desirable skill for new programmers to practice!
@@ -75,7 +76,16 @@ For anyone interested in becoming a maintainer we are currently accepting applic
 
 # Understanding the Maze
 ## Core Concepts
-### search algorithms
+### Graph Theory
+
+In order to generate or solve a maze it must be represented as a data structure. The most common way of doing this, and the way that Maze Winner represents the maze, involves graph theory. Graph theory is the representation of a maze as a grid with an arrangement that is predetermined. In the representation of the maze as a grid each cell is a member of the maze data set. In a maze each cell must also have walls represented and whether or not these walls are open or closed. The maze data structure must be available to both the algorithms generating the maze and the algorithms solving the maze.
+
+Representing the maze in graph structure allows the programmer to use a variety of algorithms for generating a maze that invoke node traversal in order to find paths from the start node to the end node. Depth First Search, Breadth First Search, Prim’s algorithm, Kruskal’s algorithm, and AldousBroder all essentially work by drawing a path through a maze by traversing the nodes representing cells. These algorithms then remove the walls of the maze along the path that has been created by their search. Even though these algorithms have different methodologies they are united in the way that they interact with the structure of the maze. This is because algorithms used to generate mazes using graph theory, typically resemble connected tree structures or connected, undirected graphs.
+
+### Solving Mazes
+
+By drawing paths through the maze without removing walls almost all of the algorithms used to generate mazes can also be used to find paths through the maze in order to solve it.  A good algorithm for solving a maze is one that does not get stuck in loops and approaches solving a maze in a way that minimizes the remaining unknown factors between the start and end of the maze to achieve the goal. Some common algorithms for solving mazes include left or right wall following, depth first search, Manhattan distance and shortest path algorithms such as A*. The best algorithm to use to solve the maze varies depending on what information is available to the agent solving the maze, what the goals of the problem are and any constraints. 
+
 ## Algorithms
 
 ### Depth First Search
@@ -118,10 +128,8 @@ S.push(w)
 
 [Kiersten](https://github.com/colliecoder)
 
-## Contributors
-
 ## Open-Source
 
-
+Maze Winner is open source and distributed under an MIT license. For more information see the LICENSE file. 
 
 Accepting contributions to hacktoberfest 2022 :jack_o_lantern: :ghost: :jack_o_lantern: !
