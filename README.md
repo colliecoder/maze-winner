@@ -82,6 +82,13 @@ In order to generate or solve a maze it must be represented as a data structure.
 
 Representing the maze in graph structure allows the programmer to use a variety of algorithms for generating a maze that invoke node traversal in order to find paths from the start node to the end node. Depth First Search, Breadth First Search, Prim’s algorithm, Kruskal’s algorithm, and AldousBroder all essentially work by drawing a path through a maze by traversing the nodes representing cells. These algorithms then remove the walls of the maze along the path that has been created by their search. Even though these algorithms have different methodologies they are united in the way that they interact with the structure of the maze. This is because algorithms used to generate mazes using graph theory, typically resemble connected tree structures or connected, undirected graphs.
 
+#### Minimum Spanning Tree?
+
+A minimum spanning tree is a subset of a graph with the same number of vertices as the graph and edges equal to the number of vertices -1. 
+It also has a minimal cost for the sum of all edge weights in a spanning tree.
+
+Given a connected and undirected graph, a spanning tree of that graph is a subgraph that is a tree and connects all the vertices together. A single graph can have many different spanning trees. A minimum spanning tree (MST) or minimum weight spanning tree for a weighted, connected, undirected graph is a spanning tree with a weight less than or equal to the weight of every other spanning tree. The weight of a spanning tree is the sum of weights given to each edge of the spanning tree.
+
 ### Solving Mazes
 
 By drawing paths through the maze without removing walls almost all of the algorithms used to generate mazes can also be used to find paths through the maze in order to solve it.  A good algorithm for solving a maze is one that does not get stuck in loops and approaches solving a maze in a way that minimizes the remaining unknown factors between the start and end of the maze to achieve the goal. Some common algorithms for solving mazes include left or right wall following, depth first search, Manhattan distance and shortest path algorithms such as A*. The best algorithm to use to solve the maze varies depending on what information is available to the agent solving the maze, what the goals of the problem are and any constraints. 
@@ -98,15 +105,19 @@ The result of a depth-first search of a graph can be conveniently described in t
 
 #### Pseudocode
 
-Input: Output: A recursive implementation of DFS:[5]
+Input: Output: A recursive implementation of DFS:
 
+```
 procedure DFS(G, v) is
 label v as discovered
 for all directed edges from v to w that are in G.adjacentEdges(v) do
 if vertex w is not labeled as discovered then
 recursively call DFS(G, w)
-A non-recursive implementation of DFS with worst-case space complexity {\displaystyle O(|E|)}O(|E|), with the possibility of duplicate vertices on the stack:[6]
+```
 
+A non-recursive implementation of DFS with worst-case space complexity {\displaystyle O(|E|)}O(|E|), with the possibility of duplicate vertices on the stack:
+
+```
 procedure DFS_iterative(G, v) is
 let S be a stack
 S.push(v)
@@ -116,9 +127,48 @@ if v is not labeled as discovered then
 label v as discovered
 for all edges from v to w in G.adjacentEdges(v) do
 S.push(w)
+```
 
 ### Breadth First Search
+
 ### Kruskal 
+
+Kruskal’s algorithm is the concept that is introduced in the graph theory of discrete mathematics. It is used to
+discover the shortest path between two points in a connected weighted graph. This algorithm converts a given
+graph into the forest, considering each node as a separate tree. The Kruskal algorithm is used to generate a minimum spanning tree for a given graph.
+
+
+In Kruskal's algorithm, we start from edges with the lowest weight and keep adding the edges until the goal is reached. The steps to implement Kruskal's algorithm are listed as follows :
+
+- First, sort all the edges from low weight to high.
+
+- Now, take the edge with the lowest weight and add it to the spanning tree. If the edge to be added creates a cycle, then reject the edge.
+
+- Continue to add the edges until we reach all vertices, and a minimum spanning tree is created.
+
+Kruskal's algorithm has many application but most noticeably it can be used to layour electrical wiring among cities and can be usd to lay down LAN connections. Kruskals algorithm can also be used to generate a minimum spanning tree. The process for doing so is as follows:
+
+- Step 1: Sort all edges in increasing order of their edge weights.
+- Step 2: Pick the smallest edge.
+- Step 3: Check if the new edge creates a cycle or loop in a spanning tree.
+- Step 4: If it doesn’t form the cycle, then include that edge in MST. Otherwise, discard it.
+- Step 5: Repeat from step 2 until it includes |V| - 1 edges in MST.
+
+
+#### Kruskal Algorithm Pseudocode
+```
+KRUSKAL(G):
+
+A = ∅
+For each vertex v ∈ G.V:
+  MAKE-SET(v)
+For each edge (u, v) ∈ G.E ordered by increasing order by weight(u, v):
+  if FIND-SET(u) ≠ FIND-SET(v):
+  A = A ∪ {(u, v)}
+  UNION(u, v)
+ return A
+```
+
 ### Prim
 ### AldousBroder
 
