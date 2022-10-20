@@ -51,6 +51,8 @@ class Maze {
     constructor(size) {
     	this.size = size;
         this.cells = [];
+        this.start = {};
+        this.end = {};
 		for (let y = 0; y < this.size; ++y) {
 			this.cells.push([])
 			for (let x = 0; x < this.size; ++x) {
@@ -77,6 +79,26 @@ class Maze {
 				this.cells[y][x].draw();
 			}
 		}
+
+        // Maze start point
+        let startX = Math.floor(Math.random() * this.size);
+        let startY = 0;
+        this.start = this.cells[startX][startY];
+        this.cells[startX][startY].point({
+            color: 'green',
+            posX: startX,
+            posY: startY
+        });
+
+        // Maze end point
+        let endX = Math.floor(Math.random() * this.size);
+        let endY = 9;
+        this.end = this.cells[endX][endY];
+        this.cells[endX][endY].point({
+            color: 'red',
+            posX: endX,
+            posY: endY
+        });
 	}
 
 	at(x, y) {
@@ -255,6 +277,11 @@ class Cell {
 		}
 		
 		ctx.stroke();
+    }
+
+    point(data) {
+        ctx.fillStyle = data.color;
+        ctx.fillRect(data.posX * 50, data.posY * 50, 50, 50);
     }
 }
 
