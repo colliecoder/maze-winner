@@ -285,8 +285,23 @@ class Cell {
     }
 }
 
-let maze = new Maze(10);
-maze.generateDepthFirst();
-//maze.generateAldousBroder();
-// maze.generateKrushkal();
-maze.draw();
+
+function generateMaze(user_input) {
+	let maze = new Maze(10);
+
+	if (user_input == "DFS") {
+		maze.generateDepthFirst();
+	}
+	else if (user_input == "Kruskal") {
+		maze.generateKrushkal();
+	}
+	else if (user_input == "Prim") {
+		console.log("Prim");
+	}
+	else if (user_input == "AB") {
+		maze.generateAldousBroder();
+	}
+
+	maze.draw();
+};
+

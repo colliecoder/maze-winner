@@ -11,8 +11,18 @@
 <body>
     <div class="info_text">
         <h1>Maze Winner</h1>
-        <p>Game Instructions</p>
+        <p>Click the "Generate Maze" button to generate the maze using a search algorithm. <br>
+            After generating the maze click the "Solve Maze" button to solve the maze using a search algorithm.</p>
     </div>
+    <select id = "left_dropdown" onchange = "generateMaze(this.value)">
+        <option value = "DFS">Depth First Search</option>
+        <option value = "Kruskal">Kruskal</option>
+        <option value = "Prim">Prim</option>
+        <option value = "AB">Aldous Broder</option>
+    </select>
+    <select id = "right_dropdown">
+        <option value = "1">Breadth First Search</option>
+    </select>
     <canvas id = "canvas" height = "500" width = "500" ></canvas>
     <script src="maze_generator.js"></script>
     <script src="maze_solver.js"></script>
