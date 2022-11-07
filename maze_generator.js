@@ -286,7 +286,6 @@ class Cell {
 }
 
 
-
 function generateMaze(user_input) {
 	let maze = new Maze(10);
 
@@ -305,8 +304,4 @@ function generateMaze(user_input) {
 
 	maze.draw();
 };
-
-
-
-
 

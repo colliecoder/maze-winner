@@ -1,46 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 html, body  {
-    width: 100%;
-    height: 100%;
-    top: 0;
-    bottom: 0;
-    margin: 0;
-    padding: 0;
-    position: absolute ;
+    font-family: Montserrat, sans-serif;
     background-color: #DB7093;
-}
-
-div#maze_container {
-
-    width: 500px;
-    height: 500px;
-    margin: 0 auto;
-    position: relative;
-    border: 2px #000000 solid;
-    margin-top: 5em;
-}
-table {
-
-    width: 100%;
-    height: 100%;
-    border-spacing: 0;
-    
 }
 
 .info_text {
     color: whitesmoke;
     text-align: center;
-    padding : 0;
-    margin : 0;
-    line-height : 20px;
+    line-height: 20px;
 }
 
 h1 {
-    font-size: 3em;
+    font-size: 3rem;
 }
 
 canvas {
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
     display: block;
     border: 2px solid blue;
 }
@@ -50,4 +26,5 @@ canvas {
         width: 85%;
     }
 }
+
 
