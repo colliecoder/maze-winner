@@ -16,10 +16,43 @@ function shuffle(array) {
 
 blankCanvas();
 
+class DSU {
+	constructor(n) {
+		this.parent = new Array(n);
+		for(let i = 0; i < n; ++i) {
+			this.parent[i] = new Array(n);
+		}
+
+		for(let i = 0; i < n; ++i) {
+			for(let j = 0; j < n; ++j) {
+				this.parent[i][j] = [i, j];
+			}
+		}
+	}
+
+	getParent(x, y) {
+		if(this.parent[x][y][0] === x && this.parent[x][y][1] === y) {
+			return [x, y];
+		}
+		return this.parent[x][y] = this.getParent(...this.parent[x][y]);
+	}
+
+	unite(x1, y1, x2, y2) {
+		[x1, y1] = this.getParent(x1, y1);
+		[x2, y2] = this.getParent(x2, y2);
+
+		if(x1 !== x2 || y1 !== y2) {
+			this.parent[x1][y1] = [x2, y2];
+		}
+	}
+}
+
 class Maze {
     constructor(size) {
     	this.size = size;
         this.cells = [];
+        this.start = {};
+        this.end = {};
 		for (let y = 0; y < this.size; ++y) {
 			this.cells.push([])
 			for (let x = 0; x < this.size; ++x) {
@@ -46,6 +79,26 @@ class Maze {
 				this.cells[y][x].draw();
 			}
 		}
+
+        // Maze start point
+        let startX = Math.floor(Math.random() * this.size);
+        let startY = 0;
+        this.start = this.cells[startX][startY];
+        this.cells[startX][startY].point({
+            color: 'green',
+            posX: startX,
+            posY: startY
+        });
+
+        // Maze end point
+        let endX = Math.floor(Math.random() * this.size);
+        let endY = 9;
+        this.end = this.cells[endX][endY];
+        this.cells[endX][endY].point({
+            color: 'red',
+            posX: endX,
+            posY: endY
+        });
 	}
 
 	at(x, y) {
@@ -70,7 +123,7 @@ class Maze {
 		}
 	}
 
-	generateKrushal() {
+	generateKrushkal() {
 		/*
 		Create a list of all walls, and create a set for each cell, each containing just that one cell.
 		For each wall, in some random order:
@@ -78,6 +131,51 @@ class Maze {
 				Remove the current wall.
 				Join the sets of the formerly divided cells.
 		*/
+
+		// create a list of all walls.
+		let walls = [];
+		for(let y = 0; y < this.size; ++y) {
+			for(let x = 0; x < this.size; ++x) {
+				let cell = this.at(x, y);
+				if(cell.neighbours.north != null) {
+					walls.push([cell, cell.neighbours.north]);
+				}
+
+				if(cell.neighbours.east != null) {
+					walls.push([cell, cell.neighbours.east]);
+				}
+
+				if(cell.neighbours.south != null) {
+					walls.push([cell, cell.neighbours.south]);
+				}
+
+				if(cell.neighbours.west != null) {
+					walls.push([cell, cell.neighbours.west]);
+				}
+			}
+		}
+
+		// create a set for each cell.
+		let dsu = new DSU(this.size);
+		
+		// for each wall, in some random order:
+		walls = shuffle(walls);
+
+		for(let i = 0; i < walls.length; ++i) {
+			let [cell1, cell2] = walls[i];
+
+			// if the cells divided by this wall belong to distinct sets:
+			const [x1, y1] = dsu.getParent(cell1.x, cell1.y);
+			const [x2, y2] = dsu.getParent(cell2.x, cell2.y);
+
+			if(x1 !== x2 || y1 !== y2) {
+				// remove the current wall.
+				cell1.tunnelTo(cell2);
+
+				// join the sets of the formerly divided cells.
+				dsu.unite(cell1.x, cell1.y, cell2.x, cell2.y);
+			}
+		}
 	}
 
 	generatePrim() {
@@ -92,16 +190,32 @@ class Maze {
 	*/
 	}
 
-	generateAldousBroder() {
-		/*
-		Pick a random cell as the current cell and mark it as visited.
-		While there are unvisited cells:
-			Pick a random neighbour.
-			If the chosen neighbour has not been visited:
-				Remove the wall between the current cell and the chosen neighbour.
-				Mark the chosen neighbour as visited.
-			Make the chosen neighbour the current cell.
-		*/
+	generateAldousBroder(visited = []) {
+		//mark a random cell as visited
+		let currentCell = this.at(
+			Math.floor(Math.random() * this.size),
+			Math.floor(Math.random() * this.size)
+		);
+		visited.push(currentCell);
+
+		let remaining = this.cells.flat().length - 1;
+		while(remaining > 0) {
+			const directions = shuffle(['north', 'south', 'east', 'west']);
+			for (const direction of directions) {
+				let neighbour = currentCell.neighbours[direction];
+				if(neighbour != null && !visited.includes(neighbour)) {
+					currentCell.tunnelTo(neighbour);
+					currentCell = neighbour;
+					visited.push(currentCell);
+					remaining -= 1;
+				}
+			}
+			//Taking another random cell to avoid infinite loop in visited cells 
+			currentCell = this.at(
+				Math.floor(Math.random() * this.size),
+				Math.floor(Math.random() * this.size)
+			);
+		}
 	}
 }
 
@@ -122,7 +236,7 @@ class Cell {
 
 			if(this.neighbours.south == cell) {
 				this.bottom = false;
-				this.neighbours.south.bottom = true;
+				this.neighbours.south.top = false;
 			}
 
 			if(this.neighbours.west == cell) {
@@ -164,8 +278,35 @@ class Cell {
 		
 		ctx.stroke();
     }
+
+    point(data) {
+        ctx.fillStyle = data.color;
+        ctx.fillRect(data.posX * 50, data.posY * 50, 50, 50);
+    }
 }
 
-let maze = new Maze(10);
-maze.generateDepthFirst();
-maze.draw();
+
+
+function generateMaze(user_input) {
+	let maze = new Maze(10);
+
+	if (user_input == "DFS") {
+		maze.generateDepthFirst();
+	}
+	else if (user_input == "Kruskal") {
+		maze.generateKrushkal();
+	}
+	else if (user_input == "Prim") {
+		console.log("Prim");
+	}
+	else if (user_input == "AB") {
+		maze.generateAldousBroder();
+	}
+
+	maze.draw();
+};
+
+
+
+
+
