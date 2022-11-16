@@ -7,14 +7,9 @@
 - Create a pull request.
 - and done...will be reviewed soon.
 
-## Hacktoberfest 2022
-- This repository is actively accepting contributions to hacktoberfest 2022
-- For a contribution to count towards hacktoberfest it must be significant:
-  - For a README.md contribution to count it must be more than two paragraphs and contain significant information about the project
-  - Programming contributions should solve at least one file or one function and be more than 10 lines of code
-  - Contributions that solve an existing issue will also be accepted as long as the issue is more than just a typo
-
 ## For Beginners: 
+This repository is beginner friendly! As such we have a different process for contributors that are still building up their confidence:
+
 - Fork this repo
 - Look over the repository and find an area you would like to work on
   - a good first project would be to pick an incomplete function to work on within maze_completion.js or maze_solver.js.
