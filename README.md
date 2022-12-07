@@ -1,13 +1,16 @@
 [//]: <> (add visuals and code snippets)
-#  Maze Winner for Visualizing Search Algorithms
+#  Maze Generator for Visualizing Search Algorithms
 
-Maze winner is a maze generation visualization of popular search algorithms such as depth first search and aldous broder. 
+Maze Generator is a maze generation visualization of popular search algorithms such as depth first search and aldous broder. 
+
+Maze Generator is live using github pages at:    <br>
+[Maze Generator](https://colliecoder.github.io/maze-winner/)
 
 # Overview
 
 Maze generation is a classic application of search algorithms just as much as solving mazes is. Maze generation works by manipulating a grid that uses cells and walls. Many maze generating techniques work by drawing a path through a grid and then removing the walls the line passes through. Many maze solving techniques also work by drawing a path through a grid, but now with the restraints of solid walls that cannot be passed through. 
 
-The goal of the maze winner project is to visualize the paths different search algorithms traverse to create the maze. By visualizing the way that node-traversing search algorithms generate mazes it's possible to understand them better. The purpose of this project is thus educational.
+The goal of the Maze Generator project is to visualize the paths different search algorithms traverse to create the maze. By visualizing the way that node-traversing search algorithms generate mazes it's possible to understand them better. The purpose of this project is thus educational.
 
 In order to work this project uses...
 # Process
@@ -16,7 +19,7 @@ In order to work this project uses...
 
 ### HTML Canvas
 
-HTML Canvas is an element in HTML to enable drawing within a set area. Maze winner uses HTML canvas to draw the maze walls. Canvas allows the programmer to designate a square or rectangular space within an HTML document that can be "drawn on". In maze winner you can find this line of code in the index.html creating the canvas element: 
+HTML Canvas is an element in HTML to enable drawing within a set area. Maze Generator uses HTML canvas to draw the maze walls. Canvas allows the programmer to designate a square or rectangular space within an HTML document that can be "drawn on". In Maze Generator you can find this line of code in the index.html creating the canvas element: 
 
 ```
 <canvas id = "canvas" height = "500" width = "500" ></canvas>
