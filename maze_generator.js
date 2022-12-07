@@ -178,18 +178,6 @@ class Maze {
 		}
 	}
 
-	generatePrim() {
-		/*
-		Start with a grid full of walls.
-		Pick a cell, mark it as part of the maze. Add the walls of the cell to the wall list.
-		While there are walls in the list:
-			Pick a random wall from the list. If only one of the cells that the wall divides is visited, then:
-				Make the wall a passage and mark the unvisited cell as part of the maze.
-				Add the neighboring walls of the cell to the wall list.
-			Remove the wall from the list.
-	*/
-	}
-
 	generateAldousBroder(visited = []) {
 		//mark a random cell as visited
 		let currentCell = this.at(
@@ -254,7 +242,7 @@ class Cell {
 
     draw() {
         ctx.lineWidth = 3;
-        ctx.strokeStyle = "white";
+        ctx.strokeStyle = "black";
 
 		if(this.left) {
 			ctx.moveTo(this.x*50, this.y*50);
@@ -286,22 +274,26 @@ class Cell {
 }
 
 
-function generateMaze(user_input) {
-	let maze = new Maze(10);
 
+function generateMaze(user_input) {
 	if (user_input == "DFS") {
+		let maze = new Maze(10);
 		maze.generateDepthFirst();
+		maze.draw();
 	}
 	else if (user_input == "Kruskal") {
+		let maze = new Maze(10);
 		maze.generateKrushkal();
-	}
-	else if (user_input == "Prim") {
-		console.log("Prim");
+		maze.draw();
 	}
 	else if (user_input == "AB") {
+		let maze = new Maze(10);
 		maze.generateAldousBroder();
+		maze.draw();
 	}
-
-	maze.draw();
 };
+
+
+
+
 

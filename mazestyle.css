@@ -2,7 +2,7 @@
 
 html, body  {
     font-family: Montserrat, sans-serif;
-    background-color: #DB7093;
+    background-color: black;
 }
 
 .info_text {
@@ -18,7 +18,7 @@ h1 {
 canvas {
     margin: auto;
     display: block;
-    border: 2px solid blue;
+    border: 2px solid black;
 }
 
 @media only screen and (max-width: 757px) {
@@ -26,5 +26,3 @@ canvas {
         width: 85%;
     }
 }
-
-

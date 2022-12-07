@@ -1,13 +1,13 @@
 [//]: <> (add visuals and code snippets)
 #  Maze Winner for Visualizing Search Algorithms
 
-Maze winner is a maze generation and maze solver visualization of popular search algorithms such as depth first search and aldous broder. 
+Maze winner is a maze generation visualization of popular search algorithms such as depth first search and aldous broder. 
 
 # Overview
 
 Maze generation is a classic application of search algorithms just as much as solving mazes is. Maze generation works by manipulating a grid that uses cells and walls. Many maze generating techniques work by drawing a path through a grid and then removing the walls the line passes through. Many maze solving techniques also work by drawing a path through a grid, but now with the restraints of solid walls that cannot be passed through. 
 
-The goal of the maze winner project is to visualize the paths search algorithms traverse to create the maze or to solve the maze. By visualizing the way that node-traversing search algorithms generate mazes and solve mazes it's possible to understand them better. The purpose of this project is thus educational.
+The goal of the maze winner project is to visualize the paths different search algorithms traverse to create the maze. By visualizing the way that node-traversing search algorithms generate mazes it's possible to understand them better. The purpose of this project is thus educational.
 
 In order to work this project uses...
 # Process
@@ -70,7 +70,7 @@ And as maze-winner is a hacktoberfest 2022 project, JavaScript was an obvious ch
 
 ## Approach Taken
 
-The maze-winner project takes an object-oriented and collaborative open source approach. By having an object-orientated design, the maze-winner project is easily adaptable to different generation and solving algorithms. Abstraction, as part of an object-oriented design ensures that the program is organized by concept. By having an open sourch approach to development maze-winner is collaboratively built. As such maze-winner is distributed under an open-source MIT license and freely available to the public. The project is designed collaboratively and the contributors are listed below. 
+The maze-winner project takes an object-oriented and collaborative open source approach. By having an object-orientated design, the maze-winner project is easily adaptable to different generation algorithms. Abstraction, as part of an object-oriented design ensures that the program is organized by concept. By having an open sourch approach to development maze-winner is collaboratively built. As such maze-winner is distributed under an open-source MIT license and freely available to the public. The project is designed collaboratively and the contributors are listed below. 
 
 For anyone interested in becoming a maintainer we are currently accepting applicants. 
 
@@ -78,7 +78,7 @@ For anyone interested in becoming a maintainer we are currently accepting applic
 ## Core Concepts
 ### Graph Theory
 
-In order to generate or solve a maze it must be represented as a data structure. The most common way of doing this, and the way that Maze Winner represents the maze, involves graph theory. Graph theory is the representation of a maze as a grid with an arrangement that is predetermined. In the representation of the maze as a grid each cell is a member of the maze data set. In a maze each cell must also have walls represented and whether or not these walls are open or closed. The maze data structure must be available to both the algorithms generating the maze and the algorithms solving the maze.
+In order to generate a maze it must be represented as a data structure. The most common way of doing this, and the way that Maze Winner represents the maze, involves graph theory. Graph theory is the representation of a maze as a grid with an arrangement that is predetermined. In the representation of the maze as a grid each cell is a member of the maze data set. In a maze each cell must also have walls represented and whether or not these walls are open or closed. The maze data structure must be available to both the algorithms generating the maze.
 
 Representing the maze in graph structure allows the programmer to use a variety of algorithms for generating a maze that invoke node traversal in order to find paths from the start node to the end node. Depth First Search, Breadth First Search, Prim’s algorithm, Kruskal’s algorithm, and AldousBroder all essentially work by drawing a path through a maze by traversing the nodes representing cells. These algorithms then remove the walls of the maze along the path that has been created by their search. Even though these algorithms have different methodologies they are united in the way that they interact with the structure of the maze. This is because algorithms used to generate mazes using graph theory, typically resemble connected tree structures or connected, undirected graphs.
 
@@ -88,10 +88,6 @@ A minimum spanning tree is a subset of a graph with the same number of vertices 
 It also has a minimal cost for the sum of all edge weights in a spanning tree.
 
 Given a connected and undirected graph, a spanning tree of that graph is a subgraph that is a tree and connects all the vertices together. A single graph can have many different spanning trees. A minimum spanning tree (MST) or minimum weight spanning tree for a weighted, connected, undirected graph is a spanning tree with a weight less than or equal to the weight of every other spanning tree. The weight of a spanning tree is the sum of weights given to each edge of the spanning tree.
-
-### Solving Mazes
-
-By drawing paths through the maze without removing walls almost all of the algorithms used to generate mazes can also be used to find paths through the maze in order to solve it.  A good algorithm for solving a maze is one that does not get stuck in loops and approaches solving a maze in a way that minimizes the remaining unknown factors between the start and end of the maze to achieve the goal. Some common algorithms for solving mazes include left or right wall following, depth first search, Manhattan distance and shortest path algorithms such as A*. The best algorithm to use to solve the maze varies depending on what information is available to the agent solving the maze, what the goals of the problem are and any constraints. 
 
 ## Algorithms
 
@@ -180,6 +176,4 @@ For each edge (u, v) ∈ G.E ordered by increasing order by weight(u, v):
 
 ## Open-Source
 
-Maze Winner is open source and distributed under an MIT license. For more information see the LICENSE file. 
-
-Accepting contributions to hacktoberfest 2022 :jack_o_lantern: :ghost: :jack_o_lantern: !
+Maze Winner is open source and distributed under an MIT license. Significant contributions were made to this repository for Hacktoberfest 2022! For more information see the LICENSE file. 
