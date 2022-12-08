@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Maze Winner</title>
+    <title>Maze Generator</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="mazestyle.css">
     
@@ -13,6 +13,7 @@
         <h1>Maze Generator</h1>
         <p>Select a search algorithm from the dropdown to generate a maze.</p>
     </div>
+    <p>Select Search Algorithm: </p>
     <select id = "left_dropdown" onchange = "generateMaze(this.value)">
         <option value = "default"></option>
         <option value = "DFS">Depth First Search</option>
