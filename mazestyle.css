@@ -15,6 +15,11 @@ h1 {
     font-size: 3rem;
 }
 
+p {
+    color: white;
+    font-family: Montserrat, sans-serif;
+}
+
 canvas {
     margin: auto;
     display: block;
