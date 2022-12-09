@@ -26,6 +26,11 @@ canvas {
     border: 2px solid black;
 }
 
+#left_dropdown {
+    position: relative;
+    top: -40px;
+}
+
 @media only screen and (max-width: 757px) {
     #canvas {
         width: 85%;

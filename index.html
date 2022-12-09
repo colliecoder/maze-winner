@@ -6,6 +6,7 @@
     <title>Maze Generator</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="mazestyle.css">
+    
 </head>
 <body>
     <div class="info_text">
@@ -13,6 +14,7 @@
         <p>Select a search algorithm from the dropdown to generate a maze.</p>
     </div>
     <p>Select Search Algorithm: </p>
+    <p><input id = "reload" type="button" value="Reload" onClick="refresh(this)"></p>
     <select id = "left_dropdown" onchange = "generateMaze(this.value)">
         <option value = "default"></option>
         <option value = "DFS">Depth First Search</option>
