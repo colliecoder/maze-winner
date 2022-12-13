@@ -1,6 +1,8 @@
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
+document.getElementById('reload').style.visibility='hidden';
+
 function blankCanvas() {
 	ctx.fillStyle = 'skyblue';
 	ctx.fillRect(0, 0, 500, 500);
@@ -291,7 +293,16 @@ function generateMaze(user_input) {
 		maze.generateAldousBroder();
 		maze.draw();
 	}
+	document.getElementById('left_dropdown').style.visibility='hidden';
+	document.getElementById('reload').style.visibility='visible';
 };
+
+function refresh(){
+	window.location.reload("Reload")
+  }
+
+
+
 
 
 
