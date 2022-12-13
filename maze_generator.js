@@ -275,7 +275,9 @@ class Cell {
     }
 }
 
-
+function refresh(){
+	window.location.reload("Reload");
+  }
 
 function generateMaze(user_input) {
 	if (user_input == "DFS") {
@@ -297,9 +299,6 @@ function generateMaze(user_input) {
 	document.getElementById('reload').style.visibility='visible';
 };
 
-function refresh(){
-	window.location.reload("Reload")
-  }
 
 
 
