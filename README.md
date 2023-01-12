@@ -4,7 +4,7 @@
 Maze Generator is a maze generation visualization of popular search algorithms such as depth first search and aldous broder. 
 
 Maze Generator is live using github pages at:    <br>
-[Maze Generator](https://colliecoder.github.io/maze-winner/)
+[Click Me!](https://colliecoder.github.io/maze-winner/)
 
 # Overview
 
@@ -85,7 +85,7 @@ In order to generate a maze it must be represented as a data structure. The most
 
 Representing the maze in graph structure allows the programmer to use a variety of algorithms for generating a maze that invoke node traversal in order to find paths from the start node to the end node. Depth First Search, Breadth First Search, Prim’s algorithm, Kruskal’s algorithm, and AldousBroder all essentially work by drawing a path through a maze by traversing the nodes representing cells. These algorithms then remove the walls of the maze along the path that has been created by their search. Even though these algorithms have different methodologies they are united in the way that they interact with the structure of the maze. This is because algorithms used to generate mazes using graph theory, typically resemble connected tree structures or connected, undirected graphs.
 
-#### Minimum Spanning Tree?
+#### Minimum Spanning Tree
 
 A minimum spanning tree is a subset of a graph with the same number of vertices as the graph and edges equal to the number of vertices -1. 
 It also has a minimal cost for the sum of all edge weights in a spanning tree.
@@ -168,8 +168,11 @@ For each edge (u, v) ∈ G.E ordered by increasing order by weight(u, v):
  return A
 ```
 
-### Prim
 ### AldousBroder
+
+The AldousBroder algorithm is one of the simplest algorithms to generate a maze with. Essentially AldousBroder works by choosing a neighbour and carving a path between the current cell to the neighbouring cell. Once this is done AldousBroder adds the neighbouring cell to the visited stack and sets the neighbouring cell as the current cell.
+
+The only caveat is that if the neighbour cell has been already visited AldousBroder won't carve a path between the two cells. Instead the AldousBroder algorithm just sets the neighbouring cell as the current cell and continues onwards.
 
 # The People Behind the Project
 
